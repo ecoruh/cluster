@@ -13,12 +13,12 @@ if (cluster.isMaster) {
   // Fork workers.
   const worker = cluster.fork();
 
-  waitms(10000)
+  waitms(5000)
     .then(() => {
       worker.disconnect();
       timeout = setTimeout(() => {
         worker.kill();
-      }, 2000);
+      }, 1000);
     });
 
   cluster.on('exit', (worker, code, signal) => {
